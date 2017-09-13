@@ -10,13 +10,15 @@ RUN apt-get update && apt-get install -y \
     git \
     lib32stdc++6 \ 
     lib32z1 \
+    sudo \
     tar \
     unzip \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Add user and move to its home
-RUN useradd -m -s /bin/bash build
+RUN useradd -m -s /bin/bash build && \
+    echo "build ALL=NOPASSWD: ALL" > /etc/sudoers.d/build
 USER build
 WORKDIR /home/build
 
