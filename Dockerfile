@@ -14,11 +14,13 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Move to /root
-WORKDIR /root
+# Add user and move to its home
+RUN useradd -m -s /bin/bash build
+USER build
+WORKDIR /home/build
 
 # Set env
-ENV HOME="/root" \
+ENV HOME="/home/build" \
     ANDROID_HOME="$HOME/android-sdk-linux" \
     PATH="$PATH:${ANDROID_HOME}/platform-tools/"
 
