@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     lib32z1 \
     tar \
     unzip \
-    wget
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 # Move to /root
 WORKDIR /root
