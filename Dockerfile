@@ -25,11 +25,13 @@ WORKDIR /home/build
 # Set env
 ENV HOME="/home/build"
 ENV ANDROID_HOME="$HOME/android-sdk-linux" \
-    PATH="$PATH:${ANDROID_HOME}/platform-tools/"
+    PATH="$PATH:${ANDROID_HOME}/platform-tools/:${HOME}/bin/"
 
 # Download android-wait-for-emulator
 RUN wget --quiet --output-document=android-wait-for-emulator "https://raw.githubusercontent.com/travis-ci/travis-cookbooks/0f497eb71291b52a703143c5cd63a217c8766dc9/community-cookbooks/android-sdk/files/default/android-wait-for-emulator" && \
-    chmod a+x android-wait-for-emulator
+    chmod a+x android-wait-for-emulator && \
+    mkdir -p bin && \
+    mv android-wait-for-emulator bin/
 
 # Variables for easier updating
 ENV COMPILE_SDK="26" \
