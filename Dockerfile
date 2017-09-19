@@ -23,8 +23,8 @@ USER build
 WORKDIR /home/build
 
 # Set env
-ENV HOME="/home/build" \
-    ANDROID_HOME="$HOME/android-sdk-linux" \
+ENV HOME="/home/build"
+ENV ANDROID_HOME="$HOME/android-sdk-linux" \
     PATH="$PATH:${ANDROID_HOME}/platform-tools/"
 
 # Download android-wait-for-emulator
